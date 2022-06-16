@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         mAuth = FirebaseAuth.getInstance();
-
+        //test Git
 
         //我們三個的學號都有建立,密碼都是123456
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -51,15 +51,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 //String mail = "4a890007@stust.edu.tw";
-               String mail = binding.editTextEmail.getText().toString();
+                String mail = binding.editTextEmail.getText().toString();
                 //String pwd = "123456";
-               String pwd = binding.editTextPwd.getText().toString();
+                String pwd = binding.editTextPwd.getText().toString();
 
-                if("".equals(mail.trim()) || "".equals(pwd.trim()))
-                {
-                    Toast.makeText(MainActivity.this,"請輸入信箱及密碼",Toast.LENGTH_LONG).show();
-                }else
-                {
+                if ("".equals(mail.trim()) || "".equals(pwd.trim())) {
+                    Toast.makeText(MainActivity.this, "請輸入信箱及密碼", Toast.LENGTH_LONG).show();
+                } else {
                     mAuth.signInWithEmailAndPassword(mail, pwd)
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override
@@ -102,10 +100,10 @@ public class MainActivity extends AppCompatActivity {
 
                 String mail = binding.editTextEmail.getText().toString();
 
-                if("".equals(mail.trim())){
-                    Toast.makeText(MainActivity.this,"請輸入信箱",Toast.LENGTH_LONG).show();
+                if ("".equals(mail.trim())) {
+                    Toast.makeText(MainActivity.this, "請輸入信箱", Toast.LENGTH_LONG).show();
 
-                }else {
+                } else {
                     mAuth.sendPasswordResetEmail(binding.editTextEmail.getText().toString())
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
@@ -127,9 +125,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
-                if(b){
+                if (b) {
                     binding.editTextPwd.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                }else{
+                } else {
                     binding.editTextPwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
                 }
             }
@@ -139,9 +137,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent it = new Intent(MainActivity.this, MapsActivity.class);
-                it.putExtra("Station","");
+                it.putExtra("Station", "");
                 startActivity(it);
-                Log.d("Demo","切換到map畫面");
+                Log.d("Demo", "切換到map畫面");
             }
         });
 
@@ -156,8 +154,9 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
-    public void ConfirmExit(){//退出確認
-        AlertDialog.Builder ad=new AlertDialog.Builder(MainActivity.this);
+
+    public void ConfirmExit() {//退出確認
+        AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this);
         ad.setTitle("離開");
         ad.setMessage("確定要離開此程式嗎?");
         ad.setPositiveButton("是", new DialogInterface.OnClickListener() {//退出按鈕
@@ -165,10 +164,10 @@ public class MainActivity extends AppCompatActivity {
                 // TODO Auto-generated method stub
 
                 MainActivity.this.finish();//關閉activity
-                Log.d("Demo","關閉App");
+                Log.d("Demo", "關閉App");
             }
         });
-        ad.setNegativeButton("否",new DialogInterface.OnClickListener() {
+        ad.setNegativeButton("否", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int i) {
                 //不退出不用執行任何操作
             }
